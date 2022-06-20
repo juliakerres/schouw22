@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>sketches room buttons</title>
+    <style>
+        /*chat*/
+        .chatbox {
+            position: fixed;
+            left: 63%;
+            top: 42%;
+            width: 30vw;
+        }
+
+        @media(max-width:768px) {
+            .chatbox {
+                left: 33%;
+                width: 60vw;
+            }
+        }
+
+        h1 {
+            font-weight: 500;
+            font-family: ANG;
+            margin: 0%;
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @font-face {
+            font-family: ANG;
+            src: url(ANG.ttf);
+        }
+
+        input,
+        #output,
+        #number-output {
+            font-size: 14px;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            padding: 12px;
+            border: none;
+            border-width: 4px;
+            border-style: dotted;
+            border-radius: 20vw;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            outline: 0;
+            border-radius: 4px;
+            border-radius: 5vw;
+            margin-bottom: 7px;
+        }
+
+        #output,
+        #number-output {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            white-space: pre;
+            background: white;
+            line-height: 1.4;
+            border-radius: 2vw;
+
+        }
+
+        #output strong {
+            font-weight: 500;
+            font-family: ANG;
+        }
+
+        #output {
+            height: 40vh;
+            overflow: auto;
+        }
+
+
+        body {
+            padding: 30px;
+        }
+
+        #BGBoilerRoom {
+            background-color: transparent;
+            height: 10vw;
+            width: 10vw;
+            border-radius: 5vw;
+            border-color: none !important;
+            border-style: none !important;
+            transform: rotate(-45deg);
+            font-size: 14px;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            position: fixed;
+
+            transform: translate(260%, 160%);
+        }
+
+        .flex-container {
+            display: flex;
+            grid-template-rows: repeat (2fr);
+            gap: 20px;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--buttons-->
+    <div class="flex-container">
+        <button id="BGBoilerRoom" onclick="showBoilerRoom()">Boiler Room</button>
+    </div>
+
+
+    <script>
+        function showBoilerRoom() {
+            var x = document.getElementById("BGBoilerRoom");
+            if (x.style.backgroundColor === "transparent") {
+                x.style.backgroundColor = "#bc88ff";
+                x.style.boxShadow = "#bc88ff 0px 7px 4px 7px";
+
+            } else {
+                x.style.backgroundColor = "transparent";
+                x.style.boxShadow = "none";
+
+            }
+        }
+    </script>
+
+    <!--chat-->
+    </script>
+
+    <div class="chatbox">
+        <h1>Chatbox</h1>
+
+        <input id="input" placeholder="Enter your message here">
+        <div id="output"></div>
+    </div>
+    <script>
+
+        // chat
+        var topic;
+        var peers = new Set();
+        var input = document.querySelector('#input');
+        var output = document.querySelector('#output');
+
+        // peer count
+        var numberOutput = document.querySelector('#number-output');
+
+        // the setup function that is run when you open the page
+        setup();
+
+        async function setup() {
+            var peerEvents = beaker.peersockets.watch()
+
+            // method executed after a new peer joins the page
+            peerEvents.addEventListener('join', event => {
+                console.log('join', event)
+                peers.add(event.peerId)
+                // with <el>.innerHTML you can add new HTML inside an HTML element
+                output.innerHTML += `<em>Peer ${event.peerId} has joined</em>\n`
+            });
+
+            // method executed after a new peer leaves the page
+            peerEvents.addEventListener('leave', event => {
+                console.log('leave', event)
+                peers.delete(event.peerId)
+                output.innerHTML += `<em>Peer ${event.peerId} has left</em>\n`
+            });
+
+
+            topic = beaker.peersockets.join('chat');
+
+            // method executed after you press enter/return
+            input.addEventListener('keydown', e => {
+                if (event.keyCode !== 13) return
+
+                // with <el>.innerHTML and <el>.append you can add new HTML inside an HTML element
+                output.innerHTML += `<strong>You said:</strong> `
+                output.append(`${input.value}\n`)
+
+                // preparing for sending out
+                var message = new TextEncoder('utf-8').encode(input.value)
+                input.value = ''
+
+                // sending the message to all peers that are connected to the page
+                for (let peer of peers) {
+                    console.log('sending to', peer, message)
+                    topic.send(peer, message)
+                }
+            });
+
+            // method that is executed when a new message is received
+            topic.addEventListener('message', event => {
+                console.log('message', event)
+
+                // you can remove this if...else condition if you just use normal chat messaging. 
+                if (event.message == "background-change") {
+                    // this is used in the custom-message example (see awww homepage) and is hosted on the same hyperdrive. 
+                } else {
+                    // keep this
+                    output.innerHTML += `<strong>Peer ${event.peerId} says:</strong> `
+                    output.append(`${new TextDecoder().decode(event.message)}\n`)
+                }
+            });
+        }
+
+        function getPeerNumber() {
+            numberOutput.innerHTML = `<em> amount of peers: ${peers.size}</em>`;
+            console.log(`amount of peers: ${peers.size}`);
+        }
+
+    </script>
+
+</body>
+
+</html>

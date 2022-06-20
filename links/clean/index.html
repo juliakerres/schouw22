@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+<title>vacuum cleaner</title>
+
+<style>
+    body {
+        background-image: url('389076.jpg');
+        background-size: 30%;
+        background-repeat: repeat;
+    }
+
+    #yellowVacuum {
+        position: relative;
+        width: 180px;
+        top: -200px;
+        left: 100px;
+    }
+
+    #hellgruen {
+        position: relative;
+        width: 500px;
+        top: 100px;
+    }
+
+    #braun {
+        position: relative;
+        width: 400px;
+        top: -150px;
+        left: 100px;
+        right: 100px;
+    }
+
+    #orange {
+        position: relative;
+        width: 500px;
+    }
+
+    #grau {
+        position: relative;
+        width: 500px;
+    }
+
+    #lila {
+        position: relative;
+        width: 390px;
+    }
+
+    #blaurund {
+        position: relative;
+        width: 500px;
+        top: 100px;
+        left: 100px:
+    }
+
+    #muster {
+        position: relative;
+        width: 340px;
+        top: 100px;
+        bottom: 100px;
+        left: 100px;
+        right: 100px;
+    }
+
+    #kleinorange {
+        position: relative;
+        width: 300px;
+        left: 150px;
+    }
+
+    #rose {
+        position: relative;
+        width: 600px;
+        bottom: 100px;
+        top: 100px;
+        left: 200px;
+    }
+
+    #beige {
+        position: relative;
+        width: 600px;
+        bottom: 100px;
+        top: 100px;
+    }
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        animation: float 3s ease-out infinite;
+        transition: all 0.2s ease;
+    }
+
+    @keyframes float {
+
+        50% {
+            transform: translateY(60px);
+        }
+
+    }
+
+    .hidden {
+        opacity: 0;
+    }
+</style>
+
+<body>
+
+    <img id="yellowVacuum" class="hidden" src="yellow_long.png" />
+    <img id="hellgruen" class="hidden" src="hellgruen.png" />
+    <img id="braun" class="hidden" src="braun.png" />
+    <img id="orange" class="hidden" src="orange.png" />
+    <img id="grau" class="hidden" src="grau.png" />
+    <img id="lila" class="hidden" src="lila.png" />
+    <img id="blaurund" class="hidden" src="blau_rund.png" />
+    <img id="muster" class="hidden" src="muster.png" />
+    <img id="kleinorange" class="hidden" src="kleinorange.png" />
+    <img id="rose" class="hidden" src="rose.png" />
+    <img id="beige" class="hidden" src="beige.png" />
+
+
+    <audio id="yellowaudio" src="yellow.mp3" loop>
+    </audio>
+
+    <audio id="hellgruenaudio" src="hellgruen.mp3" loop>
+    </audio>
+
+    <audio id="braunaudio" src="braun.mp3" loop>
+    </audio>
+
+    <audio id="orangeaudio" src="orange.mp3" loop>
+    </audio>
+
+    <audio id="grauaudio" src="grau.mp3" loop>
+    </audio>
+
+    <audio id="lilaaudio" src="lila.mp3" loop>
+    </audio>
+
+    <audio id="blaurundaudio" src="blaurund.mp3" loop>
+    </audio>
+
+    <audio id="musteraudio" src="muster.mp3" loop>
+    </audio>
+
+    <audio id="kleinorangeaudio" src="kleinorange.mp3" loop>
+    </audio>
+
+    <audio id="roseaudio" src="rose.mp3" loop>
+    </audio>
+
+    <audio id="beigeaudio" src="beige.mp3" loop>
+    </audio>
+
+</body>
+
+<script>
+    // yellowVacuum //
+    var audio = document.getElementById("yellowaudio");
+    var images = document.getElementById("yellowVacuum");
+    // hellgruen //
+    var audio = document.getElementById("hellgruenaudio");
+    var images = document.getElementById("hellgruen");
+
+    // braun //
+    var audio = document.getElementById("braunaudio");
+    var images = document.getElementById("braun");
+
+    // orange //
+    var audio = document.getElementById("orangeaudio");
+    var images = document.getElementById("orange");
+
+    // grau //
+    var audio = document.getElementById("grauaudio");
+    var images = document.getElementById("grau");
+
+    // lila //
+    var audio = document.getElementById("lilaaudio");
+    var images = document.getElementById("lila");
+
+    // blaurund //
+    var audio = document.getElementById("blaurundaudio");
+    var images = document.getElementById("blaurund");
+
+    // muster //
+    var audio = document.getElementById("musteraudio");
+    var images = document.getElementById("muster");
+
+    // kleinorange //
+    var audio = document.getElementById("kleinorangeaudio");
+    var images = document.getElementById("kleinorange");
+
+    // rose //
+    var audio = document.getElementById("roseaudio");
+    var images = document.getElementById("rose");
+
+    // beige //
+    var audio = document.getElementById("beigeaudio");
+    var images = document.getElementById("beige");
+
+
+    // _________Keyboard als event Initiator____________ //
+
+    document.addEventListener('keydown', keyDown);
+
+    // Jeweilige Funktion für den jeweiligen Staubsauger
+    //löst man das event X aus, ergibt sich das Ereignis, dass in der Klammer steht //
+
+    function keyDown(event) {
+        // yellowVacuum //
+        if (event.code == "KeyQ") {
+            yellowVacuum.classList.toggle("hidden");
+            yellowaudio.paused ? yellowaudio.play() : yellowaudio.pause();
+        }
+
+        event.preventDefault();
+        // hellgruen //
+        if (event.code == "KeyW") {
+            hellgruen.classList.toggle("hidden");
+            hellgruenaudio.paused ? hellgruenaudio.play() : hellgruenaudio.pause();
+        }
+        // braun //
+        if (event.code == "KeyE") {
+            braun.classList.toggle("hidden");
+            braunaudio.paused ? braunaudio.play() : braunaudio.pause();
+        }
+        // orange //
+        if (event.code == "KeyR") {
+            orange.classList.toggle("hidden");
+            orangeaudio.paused ? orangeaudio.play() : orangeaudio.pause();
+        }
+        // grau //
+        if (event.code == "KeyT") {
+            grau.classList.toggle("hidden");
+            grauaudio.paused ? grauaudio.play() : grauaudio.pause();
+        }
+        // lila //
+        if (event.code == "KeyU") {
+            lila.classList.toggle("hidden");
+            lilaaudio.paused ? lilaaudio.play() : lilaaudio.pause();
+        }
+        // blaurund //
+        if (event.code == "KeyI") {
+            blaurund.classList.toggle("hidden");
+            blaurundaudio.paused ? blaurundaudio.play() : blaurundaudio.pause();
+        }
+        // muster //
+        if (event.code == "KeyO") {
+            muster.classList.toggle("hidden");
+            musteraudio.paused ? musteraudio.play() : musteraudio.pause();
+        }
+        // kleinorange //
+        if (event.code == "KeyP") {
+            kleinorange.classList.toggle("hidden");
+            kleinorangeaudio.paused ? kleinorangeaudio.play() : kleinorangeaudio.pause();
+        }
+        // rose //
+        if (event.code == "KeyA") {
+            rose.classList.toggle("hidden");
+            roseaudio.paused ? roseaudio.play() : roseaudio.pause();
+        }
+        // rose //
+        if (event.code == "KeyS") {
+            beige.classList.toggle("hidden");
+            beigeaudio.paused ? beigeaudio.play() : beigeaudio.pause();
+        }
+    }
+
+</script>

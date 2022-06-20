@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>do you have scissors?</title>
+
+    <style>
+        body {
+            font-family: ANG;
+        }
+
+        .map {
+            width: 100%;
+            position: fixed;
+            left: 0px;
+            right: 0px;
+
+        }
+
+
+        /*little picures*/
+        /*craw div: craw and circle*/
+        #idk {
+            transform: translate(-60%, 10%);
+        }
+
+        @media(max-width:768px) {
+            #idk {
+                position: fixed;
+                top: 15%;
+            }
+        }
+
+        .craw {
+            width: 50px;
+            position: fixed;
+            right: 5px;
+            top: 10px;
+
+        }
+
+        .craw_background {
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            border-color: rgb(255, 41, 148);
+            position: fixed;
+            right: 17px;
+            top: 13px;
+            display: block;
+            animation: glowing 1300ms infinite;
+
+        }
+
+        @keyframes glowing {
+            0% {
+                border-color: rgb(255, 41, 148);
+                box-shadow: 0 0 5px rgb(255, 41, 148);
+            }
+
+            50% {
+                border-color: rgb(255, 41, 148);
+                box-shadow: 0 0 20px rgb(255, 41, 148);
+            }
+
+            100% {
+                border-color: rgb(255, 41, 148);
+                box-shadow: 0 0 5px turquoise5;
+            }
+        }
+
+        .livingRoom {
+            width: 10vw;
+            position: fixed;
+            transform: translate(240%, 460%);
+        }
+
+        .frikandelbroodje {
+            width: 6vw;
+            position: fixed;
+            transform: translate(40%, 60%);
+        }
+
+        .dog {
+            width: 5vw;
+            position: fixed;
+            transform: translate(1540%, 30%);
+        }
+
+        .mac {
+            width: 5vw;
+            position: fixed;
+            transform: translate(900%, 40%);
+        }
+
+        .wc {
+            width: 5vw;
+            position: fixed;
+            transform: translate(160%, 160%);
+        }
+
+        /*END little picures*/
+
+        /*chat*/
+        .chatbox {
+            position: fixed;
+            left: 67%;
+            top: 42%;
+            width: 30vw;
+        }
+
+        @media(max-width:768px) {
+            .chatbox {
+                left: 30%;
+                width: 60vw;
+            }
+        }
+
+        h1 {
+            font-weight: 500;
+            font-family: ANG;
+            margin: 0%;
+            text-shadow: 1px 2px 2px #bc88ff;
+            ;
+        }
+
+        @font-face {
+            font-family: ANG;
+            src: url(ANG.ttf);
+        }
+
+        input,
+        #output,
+        #number-output,
+        button {
+            font-size: 14px;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            padding: 12px;
+            border: 1px solid rgb(0, 0, 0);
+            border-width: 4px;
+            border-style: dotted;
+            border-radius: 20vw;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            outline: 0;
+            border-radius: 4px;
+            border-radius: 5vw;
+            margin-bottom: 7px;
+        }
+
+        #output,
+        #number-output {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            white-space: pre;
+            background: white;
+            line-height: 1.4;
+            border-radius: 2vw;
+
+        }
+
+        #output strong {
+            font-weight: 500;
+            font-family: ANG;
+        }
+
+        #output {
+            height: 40vh;
+            overflow: auto;
+        }
+
+        /*END chat*/
+
+        /*Description & Credits*/
+        .descriptionCredits{
+        position:fixed;
+        width: 400px;
+        top:85%;
+        left: 15px;
+        font-size: 12px;
+        }
+        @media(max-width:768px) {
+            .descriptionCredits {
+                width: 100px;
+        top:78%;
+        font-size: 9px;
+            }
+        }
+
+        /*Boiler Room*/
+
+        #BGBoilerRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(710%, 390%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #BGBoilerRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(555%, 310%);
+            }
+        }
+
+        /*Always Booked Room*/
+
+        #BGABR {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(360%, 390%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #BGABR {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(250%, 310%);
+            }
+        }
+
+        /*Library*/
+
+        #Library {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(610%, 390%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #Library {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(450%, 330%);
+            }
+        }
+
+        /*Patricias Living Room*/
+
+        #PLR {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(505%, 390%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #PLR {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(370%, 300%);
+            }
+        }
+
+        /*Bland Room Room*/
+
+        #BlandRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(370%, 190%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #BlandRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(270%, 150%);
+            }
+        }
+
+        /*Better Bland Room Room*/
+
+        #BetterBlandRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 0.8vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(520%, 180%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #BetterBlandRoom {
+                font-size: 4px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(400%, 130%);
+            }
+        }
+
+        /*Final Room*/
+
+        #FinalRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(670%, 180%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #FinalRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(520%, 150%);
+            }
+        }
+
+         /*Soft&Hardware Room*/
+
+        #SoftHard {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(830%, 200%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #SoftHard {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(650%, 150%);
+            }
+        }
+
+          /*food Room*/
+
+        #FoodRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(40%, 250%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #FoodRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(9%, 410%);
+            }
+        }
+
+                 /*Eat Room*/
+
+        #EatRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(70%, 500%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #EatRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(3%, 190%);
+            }
+        }
+
+                   /*Print Room*/
+
+        #PrintRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(1170%, 400%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #PrintRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(950%, 300%);
+            }
+        }
+
+                    /*Silkscreen Room*/
+
+        #SilkscreenRoom {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(1330%, 330%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #SilkscreenRoom {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(1050%, 280%);
+            }
+        }
+
+                     /*Silkscreen Room*/
+
+        #Ceramics {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(1630%, 250%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #Ceramics {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(1320%, 200%);
+            }
+        }
+
+        #MoreCeramics {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(1330%, 107%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #MoreCeramics {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(1040%, 100%);
+            }
+        }
+
+          #Back {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(200%, 10%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #Back {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(200%, 10%);
+            }
+        }
+
+           #Front {
+            background-color: transparent;
+            position: fixed;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 3vw;
+            border-color: none;
+            border-style: none;
+            outline: none;
+            font-size: 1vw;
+            font-family: ANG;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            transform: translate(300%, 610%);
+            text-shadow: 1px 2px 2px #bc88ff;
+        }
+
+        @media(max-width:490px) {
+            #Front {
+                font-size: 5px;
+                height: 2vw;
+                width: 2vw;
+                transform: translate(220%, 510%);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <img class="map" src="img/map.svg" />
+    </div>
+
+  <div class="descriptionCredits"/>Welcome to the chatroom! Here you can call upon your fellow students if you’re in dire need of a tool like scissors, tape, or a folding bone. Or just plain good old advice, a lunch mate or just someone to talk to. Send a message in the chat and double click on a room where you want the action to happen.<br><br><br><br>
+  A digital media project by Remco van Baren, Julia Kerres and Yaël Noij
+    </div>
+
+    <!--Boiler Room Button-->
+    <button id="BGBoilerRoom" onclick="markRoom('BGBoilerRoom')">
+        <div style="transform:rotate(310deg)">Boiler Room</div>
+    </button>
+
+    <!--Always Booked Room Button-->
+    <button id="BGABR" onclick="markRoom('BGABR')">
+        <div style="transform:rotate(310deg)">Always Booked Room</div>
+    </button>
+
+    <!--Library Button-->
+    <button id="Library" onclick="markRoom('Library')">
+        <div style="transform:rotate(310deg)">Library</div>
+    </button>
+
+    <!--Patricias Living Room Button-->
+    <button id="PLR" onclick="markRoom('PLR')">
+        <div style="transform:rotate(310deg)">Patricia's Living Room</div>
+    </button>
+
+    <!--Bland Room Button-->
+    <button id="BlandRoom" onclick="markRoom('BlandRoom')">
+        <div style="transform:rotate(310deg)">Bland Room</div>
+    </button>
+
+      <!-- Better Version of the Bland Room Button-->
+    <button id="BetterBlandRoom" onclick="markRoom('BetterBlandRoom')">
+        <div style="transform:rotate(310deg)"> Better Version Of The Bland Room</div>
+    </button>
+
+       <!--Final Room Button-->
+    <button id="FinalRoom" onclick="markRoom('FinalRoom')">
+        <div style="transform:rotate(310deg)">Final Room</div>
+    </button>
+
+        <!--Soft&Hardware Room Button-->
+    <button id="SoftHard" onclick="markRoom('SoftHard')">
+        <div style="transform:rotate(310deg)">Soft& Hardware Room</div>
+    </button>
+
+       <!--Food Button-->
+    <button id="FoodRoom" onclick="markRoom('FoodRoom')">
+        <div style="transform:rotate(310deg)">Food Room</div>
+    </button>
+
+   <!--Eat Button-->
+    <button id="EatRoom" onclick="markRoom('EatRoom')">
+        <div style="transform:rotate(310deg)">Eat Room</div>
+    </button>
+
+     <!--Print Button-->
+    <button id="PrintRoom" onclick="markRoom('PrintRoom')">
+        <div style="transform:rotate(310deg)">Print Room</div>
+    </button>
+
+     <!--Silkscreen Button-->
+    <button id="SilkscreenRoom" onclick="markRoom('SilkscreenRoom')">
+        <div style="transform:rotate(310deg)">Silkscreen Room</div>
+    </button>
+
+     <!--Ceramics Button-->
+    <button id="Ceramics" onclick="markRoom('Ceramics')">
+        <div style="transform:rotate(310deg)">Ceramics</div>
+    </button>
+
+     <!--More Ceramics Button-->
+    <button id="MoreCeramics" onclick="markRoom('MoreCeramics')">
+        <div style="transform:rotate(310deg)">More Ceramics</div>
+    </button>
+
+     <!--Back Button-->
+    <button id="Back" onclick="markRoom('Back')">
+        <div style="transform:rotate(310deg)">Back</div>
+    </button>
+
+       <!--Front Button-->
+    <button id="Front" onclick="markRoom('Front')">
+        <div style="transform:rotate(310deg)">Front</div>
+    </button>
+
+    <!--craw-->
+    <div id="idk" class="craw_background">
+        <img class="craw" src="img/craw.png" />
+    </div>
+
+    <!--living room-->
+    <img class="livingRoom" src="img/livingroom.jpeg" />
+
+    <!--frikandelbroodje-->
+    <img class="frikandelbroodje" src="img/frikandelbroodje.png" />
+
+    <!--dog-->
+    <img class="dog" src="img/dog.png" />
+
+    <!--mac-->
+    <img class="mac" src="img/mac.png" />
+
+    <!--wc-->
+    <img class="wc" src="img/wc.png" />
+
+
+    <!--chat-->
+    <div class="chatbox">
+        <h1>Chatbox</h1>
+
+        <input id="input" placeholder="Enter your message here">
+        <div id="output"></div>
+    </div>
+
+
+    <script>
+
+        // chat
+        var topic;
+        var peers = new Set();
+        var input = document.querySelector('#input');
+        var output = document.querySelector('#output');
+
+        // peer count
+        var numberOutput = document.querySelector('#number-output');
+
+        // the setup function that is run when you open the page
+        setup();
+
+        async function setup() {
+            var peerEvents = beaker.peersockets.watch()
+
+            // method executed after a new peer joins the page
+            peerEvents.addEventListener('join', event => {
+                console.log('join', event)
+                peers.add(event.peerId)
+                // with <el>.innerHTML you can add new HTML inside an HTML element
+                output.innerHTML += `<em>student in need ${event.peerId} has joined</em>\n`
+            });
+
+            // method executed after a new peer leaves the page
+            peerEvents.addEventListener('leave', event => {
+                console.log('leave', event)
+                peers.delete(event.peerId)
+                output.innerHTML += `<em>student in need ${event.peerId} has left</em>\n`
+            });
+
+
+            topic = beaker.peersockets.join('chat');
+
+            // method executed after you press enter/return
+            input.addEventListener('keydown', e => {
+                if (event.keyCode !== 13) return
+
+                // with <el>.innerHTML and <el>.append you can add new HTML inside an HTML element
+                output.innerHTML += `<strong>You said:</strong> `
+                output.append(`${input.value}\n`)
+
+                // preparing for sending out
+                var message = new TextEncoder('utf-8').encode(input.value)
+                input.value = ''
+
+                // sending the message to all peers that are connected to the page
+                for (let peer of peers) {
+                    console.log('sending to', peer, message)
+                    topic.send(peer, message)
+                }
+            });
+
+            // method that is executed when a new message is received
+            topic.addEventListener('message', event => {
+
+                // you can remove this if...else condition if you just use normal chat messaging. 
+                if (event.message[0] == "room-marker") {
+                  console.log('if works');
+                  var x = document.getElementById(event.message[1]);
+                  if (x.style.backgroundColor === "transparent") {
+                      x.style.backgroundColor = "#bc88ff";
+                      x.style.boxShadow = "#bc88ff 0px 7px 4px 7px";
+                      x.style.borderStyle = "none";
+
+                  } else {
+                      x.style.backgroundColor = "transparent";
+                      x.style.boxShadow = "none";
+                      x.style.borderStyle = "none";
+                  }
+                    // this is used in the custom-message example (see awww homepage) and is hosted on the same hyperdrive. 
+
+                } else {
+                    // keep this
+                    output.innerHTML += `<strong>Peer ${event.peerId} says:</strong> `
+                    output.append(`${new TextDecoder().decode(event.message)}\n`)
+                }
+            });
+        }
+
+        function getPeerNumber() {
+            numberOutput.innerHTML = `<em> amount of peers: ${peers.size}</em>`;
+            console.log(`amount of peers: ${peers.size}`);
+        }
+
+
+        //Beaker Browser
+
+        function markRoom(roomName) {
+            var x = document.getElementById(roomName);
+            if (x.style.backgroundColor === "transparent") {
+                x.style.backgroundColor = "#bc88ff";
+                x.style.boxShadow = "#bc88ff 0px 7px 4px 7px";
+                x.style.borderStyle = "none";
+
+            } else {
+                x.style.backgroundColor = "transparent";
+                x.style.boxShadow = "none";
+                x.style.borderStyle = "none";
+
+            }
+            var message = ["room-marker", roomName];
+
+            for (let peer of peers) {
+                console.log('sending to', peer, message);
+                topic.send(peer, message);
+            }
+        }
+
+        
+
+    </script>
+
+</body>
+
+</html>
